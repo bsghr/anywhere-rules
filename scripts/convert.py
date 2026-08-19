@@ -1,34 +1,17 @@
 #!/usr/bin/env python3
-"""
-将 Shadowrocket/Surge 风格规则集转换为 Anywhere .arrs。
-
-原则：
-1. 不重新整理规则，仅进行格式转换；
-2. 保持原规则顺序；
-3. 不主动去重；
-4. Unsupported 规则明确记录到头部；
-5. DOMAIN / DOMAIN-SUFFIX / DOMAIN-KEYWORD / IP-CIDR / IP-CIDR6
-   分别映射为 Anywhere 支持的对应规则类型。
-"""
 
 from __future__ import annotations
 
 import argparse
-import ipaddress
 import re
 import sys
 import urllib.request
 from pathlib import Path
 
-TYPE_MAP = {
-    "DOMAIN": 1,
-    "DOMAIN-SUFFIX": 2,
-    "DOMAIN-KEYWORD": 3,
-    "IP-CIDR": 4,
-    "IP-CIDR6": 5,
-}
 
-SUPPORTED = set(TYPE_MAP)
+ADGUARD_DOMAIN_PATTERN = re.compile(
+    r"^\|\|([A-Za-z0-9*._-]+)\^$"
+)
 
 
 def download(url: str) -> str:
@@ -36,143 +19,196 @@ def download(url: str) -> str:
         url,
         headers={"User-Agent": "anywhere-rules-sync/1.0"},
     )
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read().decode("utf-8-sig")
+
+    with urllib.request.urlopen(req, timeout=60) as response:
+        return response.read().decode("utf-8-sig")
 
 
-def clean_comment(line: str) -> str:
-    # 规则行末尾的 // 注释不是规则内容。
-    return line.split("//", 1)[0].strip()
+def parse_adguard_rule(line: str):
+    """
+    将 AdGuard 的域名规则：
 
+        ||example.com^
 
-def parse_rule(line: str):
-    line = clean_comment(line)
-    if not line or line.startswith("#"):
+    转换为：
+
+        DOMAIN-SUFFIX -> Anywhere 类型 2
+
+    仅转换不带其他修饰符的 ||domain^ 规则，
+    避免改变原始规则语义。
+    """
+
+    line = line.strip()
+
+    if not line:
         return None, None
 
-    # Shadowrocket 规则一般为 TYPE,value[,policy...]
-    parts = [x.strip() for x in line.split(",")]
-    rule_type = parts[0].upper()
+    # AdGuard 注释及元数据
+    if line.startswith("!"):
+        return None, None
 
-    if rule_type not in SUPPORTED:
-        return rule_type, None
+    # 白名单规则
+    if line.startswith("@@"):
+        return "EXCEPTION", None
 
-    if len(parts) < 2 or not parts[1]:
-        return rule_type, None
+    match = ADGUARD_DOMAIN_PATTERN.match(line)
 
-    value = parts[1]
+    if match:
+        domain = match.group(1)
 
-    # IP-CIDR 可能同时承载 IPv4/IPv6；按地址族自动分流。
-    if rule_type == "IP-CIDR":
-        try:
-            network = ipaddress.ip_network(value, strict=False)
-            if network.version == 6:
-                return "IP-CIDR6", network.with_prefixlen
-            return "IP-CIDR", network.with_prefixlen
-        except ValueError:
-            return rule_type, None
+        # AdGuard 中 * 属于通配语义，不能直接作为普通域名后缀转换。
+        if "*" in domain:
+            return "WILDCARD", None
 
-    if rule_type == "IP-CIDR6":
-        try:
-            network = ipaddress.ip_network(value, strict=False)
-            if network.version == 6:
-                return rule_type, network.with_prefixlen
-            return rule_type, None
-        except ValueError:
-            return rule_type, None
+        return "DOMAIN-SUFFIX", domain
 
-    return rule_type, value
+    return "UNSUPPORTED", None
 
 
-def parse_header(lines):
-    meta = {}
+def parse_metadata(lines):
+    metadata = {}
+
     for line in lines:
-        if not line.startswith("#"):
-            break
-        m = re.match(r"#\s*([^:]+):\s*(.*)$", line)
-        if m:
-            meta[m.group(1).strip().upper()] = m.group(2).strip()
-    return meta
+        line = line.strip()
+
+        if not line.startswith("!"):
+            continue
+
+        content = line[1:].strip()
+
+        if ":" in content:
+            key, value = content.split(":", 1)
+            metadata[key.strip().upper()] = value.strip()
+
+    return metadata
 
 
-def convert(source_text: str, name: str, source_url: str, routing: int, description: str):
+def convert(
+    source_text: str,
+    name: str,
+    source_url: str,
+    routing: int,
+    description: str,
+):
     lines = source_text.splitlines()
-    source_meta = parse_header(lines)
 
-    output = []
+    metadata = parse_metadata(lines)
+
+    output_rules = []
     skipped = {}
-    total_source_rules = 0
 
-    for raw in lines:
-        if not raw.strip() or raw.lstrip().startswith("#"):
+    source_rules = 0
+
+    for line in lines:
+        line = line.strip()
+
+        if not line or line.startswith("!"):
             continue
 
-        total_source_rules += 1
-        rule_type, value = parse_rule(raw)
+        source_rules += 1
 
-        if rule_type is None:
+        rule_type, value = parse_adguard_rule(line)
+
+        if rule_type == "DOMAIN-SUFFIX":
+            output_rules.append(f"2, {value}")
             continue
 
-        if value is None:
-            skipped[rule_type] = skipped.get(rule_type, 0) + 1
-            continue
-
-        output.append(f"{TYPE_MAP[rule_type]}, {value}")
+        skipped[rule_type] = skipped.get(rule_type, 0) + 1
 
     header = [
         f"# NAME: {name}",
         "# GENERATED-FOR: Anywhere Routing Rule Set",
         f"# DESCRIPTION: {description}",
-        f"# RULES: {len(output)}",
-        f"# SOURCE-RULES: {total_source_rules}",
+        f"# RULES: {len(output_rules)}",
+        f"# SOURCE-RULES: {source_rules}",
         f"# SOURCE: {source_url}",
     ]
 
-    if "UPDATED" in source_meta:
-        header.append(f"# UPSTREAM-UPDATED: {source_meta['UPDATED']}")
+    if "UPDATED" in metadata:
+        header.append(
+            f"# UPSTREAM-UPDATED: {metadata['UPDATED']}"
+        )
+
+    if "TOTAL" in metadata:
+        header.append(
+            f"# UPSTREAM-TOTAL: {metadata['TOTAL']}"
+        )
+
+    skipped_count = sum(skipped.values())
+
+    header.append(f"# SKIPPED: {skipped_count}")
 
     if skipped:
-        header.append(f"# SKIPPED: {sum(skipped.values())}")
         header.append(
-            "# SKIPPED-TYPES: " +
-            ", ".join(f"{k}={v}" for k, v in sorted(skipped.items()))
+            "# SKIPPED-TYPES: "
+            + ", ".join(
+                f"{key}={value}"
+                for key, value in sorted(skipped.items())
+            )
         )
-    else:
-        header.append("# SKIPPED: 0")
 
-    return "\n".join(header + ["", f"name = {name}", f"routing = {routing}"] + output) + "\n", skipped
+    result = (
+        header
+        + [
+            "",
+            f"name = {name}",
+            f"routing = {routing}",
+        ]
+        + output_rules
+    )
+
+    return "\n".join(result) + "\n", skipped
 
 
 def main():
     parser = argparse.ArgumentParser()
+
     parser.add_argument("--name", required=True)
     parser.add_argument("--source", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--routing", type=int, default=0)
     parser.add_argument("--description", default="")
+
     args = parser.parse_args()
 
     try:
-        text = download(args.source)
+        source_text = download(args.source)
+
         result, skipped = convert(
-            text,
-            args.name,
-            args.source,
-            args.routing,
-            args.description,
+            source_text=source_text,
+            name=args.name,
+            source_url=args.source,
+            routing=args.routing,
+            description=args.description,
         )
-    except Exception as e:
-        print(f"ERROR: {args.name}: {e}", file=sys.stderr)
+
+    except Exception as exc:
+        print(
+            f"ERROR: {args.name}: {exc}",
+            file=sys.stderr,
+        )
         return 1
 
-    path = Path(args.output)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(result, encoding="utf-8")
+    output_path = Path(args.output)
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    output_path.write_text(
+        result,
+        encoding="utf-8",
+    )
 
     if skipped:
-        print(f"{args.name}: converted with skipped types: {skipped}")
+        print(
+            f"{args.name}: converted with skipped types: {skipped}"
+        )
     else:
-        print(f"{args.name}: converted successfully")
+        print(
+            f"{args.name}: converted successfully"
+        )
 
     return 0
 
