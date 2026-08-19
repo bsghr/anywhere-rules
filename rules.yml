@@ -1,0 +1,11 @@
+# BlackMatrix7 -> Anywhere 规则同步配置
+# 增加规则时，只需复制一个 rules 项并修改 name/source/output。
+# source 建议直接使用 BlackMatrix7 的 Shadowrocket 版本，
+# 这样与小火箭实际使用的规则来源保持一致。
+
+rules:
+  - name: AdvertisingLite
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/AdvertisingLite/AdvertisingLite.list
+    output: rules/AdvertisingLite.arrs
+    routing: 2
+    description: AdvertisingLite 广告拦截规则
