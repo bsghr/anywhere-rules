@@ -2,21 +2,21 @@
 # GENERATED-FOR: Anywhere Routing Rule Set
 # DESCRIPTION: ChinaMax 中国大陆规则
 # SOURCE-FORMAT: shadowrocket
-# RULES: 12226
-# SOURCE-RULES: 12292
+# RULES: 12228
+# SOURCE-RULES: 12294
 # SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMax/ChinaMax.list
-# UPSTREAM-UPDATED: 2026-08-18 02:31:56
+# UPSTREAM-UPDATED: 2026-08-20 02:28:37
 # SKIPPED: 66
 # SKIPPED-TYPES: IP-ASN=1, USER-AGENT=65
 
 name = ChinaMax
 routing = 0
-2, alipay
 2, alibaba
 2, taobao
 2, tmall
 2, cn
 2, ms
+2, alipay
 2, anquan
 2, baidu
 2, citic
@@ -3469,6 +3469,7 @@ routing = 0
 0, 135.84.255.0/24
 0, 136.0.131.0/24
 0, 136.0.133.0/24
+0, 136.0.34.0/24
 0, 136.175.177.145/32
 0, 137.59.59.0/24
 0, 137.59.88.0/22
@@ -4435,6 +4436,7 @@ routing = 0
 0, 192.23.191.0/24
 0, 192.232.97.0/24
 0, 192.240.127.34/32
+0, 192.51.173.0/24
 0, 192.51.188.0/24
 0, 192.55.10.0/23
 0, 192.55.40.0/24
