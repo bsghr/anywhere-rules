@@ -5,7 +5,7 @@
 
 rules:
   - name: AdvertisingLite
-    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/AdvertisingLite/AdvertisingLite.list
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/AdGuard/AdvertisingLite/AdvertisingLite.txt
     output: rules/AdvertisingLite.arrs
     routing: 2
     description: AdvertisingLite 广告拦截规则
