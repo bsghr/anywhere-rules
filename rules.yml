@@ -1,11 +1,57 @@
-# BlackMatrix7 -> Anywhere 规则同步配置
-# 增加规则时，只需复制一个 rules 项并修改 name/source/output。
-# source 建议直接使用 BlackMatrix7 的 Shadowrocket 版本，
-# 这样与小火箭实际使用的规则来源保持一致。
-
 rules:
+
   - name: AdvertisingLite
+    format: adguard
     source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/AdGuard/AdvertisingLite/AdvertisingLite.txt
     output: rules/AdvertisingLite.arrs
     routing: 2
     description: AdvertisingLite 广告拦截规则
+
+  - name: ChinaMax
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMax/ChinaMax.list
+    output: rules/ChinaMax.arrs
+    routing: 0
+    description: ChinaMax 中国大陆规则
+
+  - name: ChinaMax_Domain
+    format: shadowrocket-domain
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMax/ChinaMax_Domain.list
+    output: rules/ChinaMax_Domain.arrs
+    routing: 0
+    description: ChinaMax 域名规则
+
+  - name: OpenAI
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/OpenAI/OpenAI.list
+    output: rules/OpenAI.arrs
+    routing: 1
+    description: OpenAI 规则
+
+  - name: Spotify
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/Spotify/Spotify.list
+    output: rules/Spotify.arrs
+    routing: 1
+    description: Spotify 规则
+
+  - name: Twitter
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/Twitter/Twitter.list
+    output: rules/Twitter.arrs
+    routing: 1
+    description: Twitter 规则
+
+  - name: TikTok
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/TikTok/TikTok.list
+    output: rules/TikTok.arrs
+    routing: 1
+    description: TikTok 规则
+
+  - name: Facebook
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/Facebook/Facebook.list
+    output: rules/Facebook.arrs
+    routing: 1
+    description: Facebook 规则
