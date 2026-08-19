@@ -1,0 +1,44 @@
+# NAME: TikTok
+# GENERATED-FOR: Anywhere Routing Rule Set
+# DESCRIPTION: TikTok 规则
+# SOURCE-FORMAT: shadowrocket
+# RULES: 31
+# SOURCE-RULES: 32
+# SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/TikTok/TikTok.list
+# UPSTREAM-UPDATED: 2025-08-10 02:08:00
+# SKIPPED: 1
+# SKIPPED-TYPES: USER-AGENT=1
+
+name = TikTok
+routing = 1
+2, lf16-effectcdn.byteeffecttos-g.com
+2, lf16-pkgcdn.pitaya-clientai.com
+2, p16-tiktokcdn-com.akamaized.net
+2, trae-api-sg.mchost.guru
+2, bytedapm.com
+2, bytegecko-i18n.com
+2, byteintlapi.com
+2, byteoversea.com
+2, capcut.com
+2, ibytedtos.com
+2, ibyteimg.com
+2, ipstatp.com
+2, isnssdk.com
+2, marscode.com
+2, muscdn.com
+2, musical.ly
+2, sgpstatp.com
+2, snssdk.com
+2, tik-tokapi.com
+2, tiktok.com
+2, tiktokcdn-us.com
+2, tiktokcdn.com
+2, tiktokd.net
+2, tiktokd.org
+2, tiktokmusic.app
+2, tiktokv.com
+2, tiktokv.us
+2, trae.ai
+2, ttwebview.com
+3, musical.ly
+3, tiktok

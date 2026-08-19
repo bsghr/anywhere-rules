@@ -1,0 +1,45 @@
+# NAME: Twitter
+# GENERATED-FOR: Anywhere Routing Rule Set
+# DESCRIPTION: Twitter 规则
+# SOURCE-FORMAT: shadowrocket
+# RULES: 33
+# SOURCE-RULES: 33
+# SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/Twitter/Twitter.list
+# UPSTREAM-UPDATED: 2025-09-28 02:08:26
+# SKIPPED: 0
+
+name = Twitter
+routing = 1
+2, ads-twitter.com
+2, cms-twdigitalassets.com
+2, grok.com
+2, periscope.tv
+2, pscp.tv
+2, t.co
+2, tellapart.com
+2, tweetdeck.com
+2, twimg.co
+2, twimg.com
+2, twimg.org
+2, twitpic.com
+2, twitter.biz
+2, twitter.com
+2, twitter.jp
+2, twittercommunity.com
+2, twitterflightschool.com
+2, twitterinc.com
+2, twitteroauth.com
+2, twitterstat.us
+2, twtrdns.net
+2, twttr.com
+2, twttr.net
+2, twvid.com
+2, vine.co
+2, x.com
+3, twitter
+0, 192.133.76.0/22
+0, 199.59.148.0/22
+0, 199.96.56.0/21
+0, 202.160.128.0/22
+0, 209.237.192.0/19
+0, 69.195.160.0/19

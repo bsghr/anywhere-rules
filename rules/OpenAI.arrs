@@ -1,0 +1,47 @@
+# NAME: OpenAI
+# GENERATED-FOR: Anywhere Routing Rule Set
+# DESCRIPTION: OpenAI 规则
+# SOURCE-FORMAT: shadowrocket
+# RULES: 34
+# SOURCE-RULES: 35
+# SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/OpenAI/OpenAI.list
+# UPSTREAM-UPDATED: 2025-06-06 09:20:00
+# SKIPPED: 1
+# SKIPPED-TYPES: IP-ASN=1
+
+name = OpenAI
+routing = 1
+2, browser-intake-datadoghq.com
+2, chat.openai.com.cdn.cloudflare.net
+2, openai-api.arkoselabs.com
+2, openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+2, openaicomproductionae4b.blob.core.windows.net
+2, production-openaicom-storage.azureedge.net
+2, static.cloudflareinsights.com
+2, ai.com
+2, algolia.net
+2, api.statsig.com
+2, auth0.com
+2, chatgpt.com
+2, chatgpt.livekit.cloud
+2, client-api.arkoselabs.com
+2, events.statsigapi.net
+2, featuregates.org
+2, host.livekit.cloud
+2, identrust.com
+2, intercom.io
+2, intercomcdn.com
+2, launchdarkly.com
+2, oaistatic.com
+2, oaiusercontent.com
+2, observeit.net
+2, openai.com
+2, openaiapi-site.azureedge.net
+2, openaicom.imgix.net
+2, segment.io
+2, sentry.io
+2, stripe.com
+2, turn.livekit.cloud
+3, openai
+0, 24.199.123.28/32
+0, 64.23.132.171/32

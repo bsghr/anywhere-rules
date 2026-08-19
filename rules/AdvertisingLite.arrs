@@ -1,11 +1,10 @@
 # NAME: AdvertisingLite
 # GENERATED-FOR: Anywhere Routing Rule Set
 # DESCRIPTION: AdvertisingLite 广告拦截规则
+# SOURCE-FORMAT: adguard
 # RULES: 37692
 # SOURCE-RULES: 37692
 # SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/AdGuard/AdvertisingLite/AdvertisingLite.txt
-# UPSTREAM-UPDATED: 2026-08-18 02:25:17
-# UPSTREAM-TOTAL: 37692
 # SKIPPED: 0
 
 name = AdvertisingLite
