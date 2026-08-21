@@ -2,10 +2,10 @@
 # GENERATED-FOR: Anywhere Routing Rule Set
 # DESCRIPTION: ChinaMax 域名规则
 # SOURCE-FORMAT: shadowrocket-domain
-# RULES: 11581
-# SOURCE-RULES: 11581
+# RULES: 11552
+# SOURCE-RULES: 11552
 # SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMax/ChinaMax_Domain.list
-# UPSTREAM-UPDATED: 2026-08-20 02:28:37
+# UPSTREAM-UPDATED: 2026-08-22 02:31:42
 # SKIPPED: 0
 # PART: 2/2
 
@@ -11311,7 +11311,6 @@ routing = 0
 2, activate.activation-v2.kaspersky.com
 2, activation-v2.kaspersky.com
 2, admob-cn.com
-2, afcs.dell.com
 2, aka-amd-njpwworld-hls-enlive.akamaized.net
 2, alibaba.cdn.steampipe.steamcontent.com
 2, aljazeera-eng-hd-live.hls.adaptive.level3.net
@@ -11349,32 +11348,23 @@ routing = 0
 2, chaoan.chaoantv.com
 2, clickserve.cc-dt.com
 2, client.amplifi.com
-2, clientperipherals.dell.com
 2, cn.download.nvidia.com
 2, cn.widevine.com
 2, cpro.baidustatic.com
 2, crl.pki.goog
 2, crls.pki.goog
-2, customization-cdn.dell.com
 2, d9af5a60.edmonst.net
 2, dartsearch-cn.net
-2, dds.dell.com
 2, developer.microsoft.com
-2, dl.dell.com
 2, doubleclick-cn.net
 2, doubleclick.net
 2, download.jetbrains.com
 2, e1.vdowowza.vip.hk1.tvb.com
-2, ea2cn-dev-outlet.dell.com
-2, ea2cn-prod-outlet.dell.com
-2, ea2cn-staging-outlet.dell.com
 2, edge.music-choice-play-chaina1.top.comcast.net
-2, emoi-cncdn.bing.com
 2, end-api.shallow.ink
 2, end.shallow.ink
 2, f24hls-i.akamaihd.net
 2, fash1043.cloudycdn.services
-2, fcs.dell.com
 2, file.hhtv.cc
 2, file.mb.leshantv.net
 2, firebase-settings.crashlytics.com
@@ -11382,13 +11372,7 @@ routing = 0
 2, fm929.cityfm.tw
 2, fm971.cityfm.tw
 2, fm983.cityfm.tw
-2, fta.dell.com
-2, ftaapj.dell.com
-2, ftaemea.dell.com
-2, ftasitapj.dell.com
 2, gayotv.net
-2, gbxgateway-dev.dell.com
-2, gbxgateway.dell.com
 2, gonglchuangl.net
 2, gongyichuangyi.net
 2, gpb-hls.streamguys1.com
@@ -11404,7 +11388,6 @@ routing = 0
 2, hls.qxtv0763.com
 2, hls.wlrn.mobi
 2, httpdvb.slave.ttcatv.tv
-2, i.dell.com
 2, i.pki.goog
 2, icecast-ruvr.cdnvideo.ru
 2, images-cn-8.ssl-images-amazon.com
@@ -11477,7 +11460,6 @@ routing = 0
 2, n18.rcs.revma.com
 2, necgokr2-724.acs.wecandeo.com
 2, nettvpro.live
-2, nexus.dell.com
 2, nhkw-zh-hlscomp.akamaized.net
 2, nhkwlive-xjp.akamaized.net
 2, nis.stream.publicradio.org
@@ -11488,7 +11470,6 @@ routing = 0
 2, origin-a.akamaihd.ne
 2, origin-a.akamaihd.net
 2, ott-live.olympicchannel.com
-2, p.cdn.persaas.dell.com
 2, play.jinnantv.top
 2, play.scrstv.com
 2, play.sngdxsn.com
@@ -11513,16 +11494,11 @@ routing = 0
 2, rthklive1-lh.akamaihd.net
 2, rthklive2-lh.akamaihd.net
 2, rtvcdn.com.au
-2, scene7-cdn.dell.com
 2, sdn-global-live-streaming-packager-cache-3qsdn.akamaized.net
 2, seb.sason.top
 2, service.urchin.com
-2, si.cdn.dell.com
 2, slive.ytn.co.kr
-2, sm.dell.com
 2, sms.imagetasks.com
-2, snp.cdn.dell.com
-2, snpi.dell.com
 2, sohucao.duapp.com
 2, staging-controlbe.floonet.goog
 2, staging-databe.floonet.goog
@@ -11549,10 +11525,8 @@ routing = 0
 2, stream1.shopch.jp
 2, stream2.cprnetwork.org
 2, streamipcf.akamaized.net
-2, supportassist.dell.com
 2, time.xtracloud.net
 2, tl.gscm.tv
-2, tp.louisvuitton.com
 2, trtcanlitv-lh.akamaihd.net
 2, tv.cnbeijing.xyz
 2, tv.drs.hhtv.cc
@@ -11560,7 +11534,6 @@ routing = 0
 2, tv.nknews.org
 2, uni6rtmp.tulix.tv
 2, update.crashlytics.com
-2, uplaypc-s-ubisoft.cdn.ubi.com
 2, v1.one-tv.com
 2, vip888.kuyun99.com
 2, voa-lh.akamaihd.net
@@ -11574,9 +11547,7 @@ routing = 0
 2, wowza.ner.gov.tw
 2, wpc.124ce.sigmacdn.net
 2, wuwm.streamguys1.com
-2, www-csb.dell.com
 2, www.cbsnews.com
-2, www.dell.com
 2, www.destinationurl.com
 2, www.filmon.com
 2, www.pxcc.com

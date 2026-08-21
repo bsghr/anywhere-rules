@@ -2,24 +2,25 @@
 # GENERATED-FOR: Anywhere Routing Rule Set
 # DESCRIPTION: ChinaMax 中国大陆规则
 # SOURCE-FORMAT: shadowrocket
-# RULES: 12228
-# SOURCE-RULES: 12294
+# RULES: 12230
+# SOURCE-RULES: 12296
 # SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMax/ChinaMax.list
-# UPSTREAM-UPDATED: 2026-08-20 02:28:37
+# UPSTREAM-UPDATED: 2026-08-22 02:31:42
 # SKIPPED: 66
 # SKIPPED-TYPES: IP-ASN=1, USER-AGENT=65
 
 name = ChinaMax
 routing = 0
+2, alipay
 2, alibaba
 2, taobao
 2, tmall
 2, cn
 2, ms
-2, alipay
 2, anquan
 2, baidu
 2, citic
+2, icbc
 2, shouji
 2, sina
 2, sohu
@@ -61,7 +62,6 @@ routing = 0
 2, xn--xhq521b
 2, xn--zfr164b
 2, yun
-2, icbc
 3, .tmall.com
 3, alicdn
 3, alipay
@@ -3574,7 +3574,7 @@ routing = 0
 0, 140.250.0.0/16
 0, 140.255.0.0/16
 0, 140.75.0.0/16
-0, 141.11.50.0/24
+0, 141.11.50.0/23
 0, 142.70.0.0/16
 0, 142.86.0.0/16
 0, 143.191.188.0/22
@@ -3750,7 +3750,6 @@ routing = 0
 0, 154.197.128.0/17
 0, 154.209.251.0/24
 0, 154.36.92.0/23
-0, 154.72.42.0/24
 0, 154.72.44.0/24
 0, 154.72.47.0/24
 0, 154.8.128.0/17
@@ -4004,6 +4003,7 @@ routing = 0
 0, 163.179.0.0/16
 0, 163.181.0.0/16
 0, 163.204.0.0/16
+0, 163.223.72.0/23
 0, 163.227.40.0/23
 0, 163.228.0.0/16
 0, 163.244.246.0/24
@@ -4039,6 +4039,7 @@ routing = 0
 0, 166.0.97.0/24
 0, 166.1.139.0/24
 0, 166.1.218.0/24
+0, 166.1.246.0/23
 0, 166.111.0.0/16
 0, 166.118.227.88/32
 0, 167.139.0.0/16
@@ -11934,6 +11935,7 @@ routing = 0
 0, 45.82.241.0/24
 0, 45.87.53.0/24
 0, 45.87.54.0/24
+0, 45.91.139.0/24
 0, 46.102.251.0/25
 0, 46.151.180.0/23
 0, 46.151.182.0/24
