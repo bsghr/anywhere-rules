@@ -1,0 +1,12 @@
+# NAME: CustomReject
+# GENERATED-FOR: Anywhere Routing Rule Set
+# DESCRIPTION: 自定义拒绝规则
+# SOURCE-FORMAT: shadowrocket
+# RULES: 1
+# SOURCE-RULES: 1
+# SOURCE: custom/CustomReject.list
+# SKIPPED: 0
+
+name = CustomReject
+routing = 2
+2, yumao.puata.info
