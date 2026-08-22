@@ -35,6 +35,11 @@ def download(url: str) -> str:
     with urllib.request.urlopen(request, timeout=60) as response:
         return response.read().decode("utf-8-sig")
 
+def load_source(source: str) -> str:
+    if source.startswith(("http://", "https://")):
+        return download(source)
+
+    return Path(source).read_text(encoding="utf-8-sig")
 
 def parse_metadata(lines: list[str]) -> dict[str, str]:
     metadata: dict[str, str] = {}
@@ -400,7 +405,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        source_text = download(args.source)
+        source_text = load_source(args.source)
         lines = source_text.splitlines()
 
         metadata = parse_metadata(lines)
