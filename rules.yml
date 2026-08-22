@@ -62,3 +62,10 @@ rules:
     output: rules/ChinaMobile.arrs
     routing: 0
     description: ChinaMobile 中国移动规则
+
+  - name: CustomReject
+    format: shadowrocket
+    source: custom/CustomReject.list
+    output: rules/CustomReject.arrs
+    routing: 2
+    description: 自定义拒绝规则
