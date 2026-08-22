@@ -55,3 +55,10 @@ rules:
     output: rules/Facebook.arrs
     routing: 1
     description: Facebook 规则
+
+  - name: ChinaMobile
+    format: shadowrocket
+    source: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMobile/ChinaMobile.list
+    output: rules/ChinaMobile.arrs
+    routing: 0
+    description: ChinaMobile 中国移动规则
