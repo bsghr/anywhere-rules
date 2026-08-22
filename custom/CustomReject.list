@@ -1,0 +1,4 @@
+# NAME: CustomReject
+# DESCRIPTION: 自定义拒绝规则
+
+DOMAIN-SUFFIX,yumao.puata.info
