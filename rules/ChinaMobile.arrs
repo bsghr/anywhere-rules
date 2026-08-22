@@ -1,0 +1,48 @@
+# NAME: ChinaMobile
+# GENERATED-FOR: Anywhere Routing Rule Set
+# DESCRIPTION: ChinaMobile 中国移动规则
+# SOURCE-FORMAT: shadowrocket
+# RULES: 36
+# SOURCE-RULES: 36
+# SOURCE: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/ChinaMobile/ChinaMobile.list
+# UPSTREAM-UPDATED: 2025-06-06 09:17:32
+# SKIPPED: 0
+
+name = ChinaMobile
+routing = 0
+2, 10086.cn
+2, 10086kuaixiu.com
+2, 12530.com
+2, 139.com
+2, andfx.cn
+2, andfx.net
+2, chinamobile.com
+2, chinamobiledevice.com
+2, chinamobileltd.com
+2, cmccb2b.com
+2, cmdcl.cn
+2, cmdcxls.com
+2, cmicrwx.cn
+2, cmpassport.com
+2, cmvideo.cn
+2, cxzx10086.cn
+2, fetion-portal.com
+2, fetionpic.com
+2, fxltsbl.com
+2, lovev.cn
+2, lovev.com
+2, migu.cn
+2, migucc.cn
+2, migucdn.cn
+2, migucloud.com
+2, migufm.com
+2, migugk.com
+2, migutv.com
+2, miguvideo.com
+2, miguvideo.com.cn
+2, mmarket.com
+2, mmarket6.com
+2, monternet.com
+2, warmchina121.com
+2, zdsdp.com
+0, 117.161.2.5/32
